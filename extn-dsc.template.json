@@ -30,7 +30,7 @@
                         "url": "[concat(parameters('extn-settings').url, '/', parameters('extn-settings').folder, '/', parameters('extn-settings').file, '.zip')]",
                         "script": "[concat(parameters('extn-settings').file, '.ps1')]",
                         "function": "[parameters('extn-settings').function]"
-                    }
+                    },
                     "configurationArguments": {
                         "nodeName": "[parameters('extn-settings').vmName]"
                     }
