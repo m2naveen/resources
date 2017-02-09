@@ -26,11 +26,13 @@
                 "typeHandlerVersion": "[parameters('extn-settings').typeHandlerVersion]",
                 "autoUpgradeMinorVersion": true,
                 "settings": {
-                    "wmfVersion": "latest",
                     "configuration": {
                         "url": "[concat(parameters('extn-settings').url, '/', parameters('extn-settings').folder, '/', parameters('extn-settings').file, '.zip')]",
                         "script": "[concat(parameters('extn-settings').file, '.ps1')]",
                         "function": "[parameters('extn-settings').function]"
+                    }
+                    "configurationArguments": {
+                        "nodeName": "[parameters('extn-settings').vmName]"
                     }
                 },
                 "protectedSettings": null
