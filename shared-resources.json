@@ -37,7 +37,7 @@
             "name": "[parameters('storage-settings').accounts[copyIndex()]]",
             "copy": {
                 "name": "storageLoop",
-                "count": "[parameters('storage-settings').count]"
+                "count": "[length(parameters('storage-settings').accounts)]"
             },
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2015-01-01",
@@ -78,6 +78,10 @@
         },
         {
             "name": "[parameters('avs-settings').name]",
+            "copy": {
+                "name": "avsLoop",
+                "count": "[length(parameters('avs-settings').names)]"
+            },
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2016-09-01",
             "dependsOn": [],
@@ -89,7 +93,11 @@
                 },
                 "parameters": {
                     "avs-settings": {
-                        "value": "[parameters('avs-settings')]"
+                        "value": {
+                            "name": "[parameters('avs-settings').name]",
+                            "updateCount": "[parameters('avs-settings').updateCount]",
+                            "faultCount": "[parameters('avs-settings').faultCount]"
+                        }
                     }
                 }
             }
