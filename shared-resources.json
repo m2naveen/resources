@@ -52,7 +52,8 @@
                     "storage-settings": {
                         "value": {
                             "name": "[parameters('storage-settings').accounts[copyIndex()]]",
-                            "accountType": "[parameters('storage-settings').accountType]"
+                            "accountType": "[parameters('storage-settings').accountType]",
+                            "existingRg": "[parameters('storage-settings').existingRg]"
                         }
                     }
                 }
