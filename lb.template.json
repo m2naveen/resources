@@ -29,28 +29,6 @@
                 "outboundNatRules": "[parameters('lb-settings').outboundNatRules]",
                 "inboundNatPools": "[parameters('lb-settings').inboundNatPools]"
             }
-        },
-        {
-            "apiVersion": "2016-03-30",
-            "type": "Microsoft.Network/loadBalancers/inboundNatRules",
-            "copy": {
-                "name": "lbRdpNatLoop",
-                "count": "[parameters('lb-settings').count]"
-            },
-            "name": "[concat(parameters('lb-settings').name, '/', 'nat-rdp-vm', copyIndex())]",
-            "location": "[resourceGroup().location]",
-            "dependsOn": [
-                "[concat('Microsoft.Network/loadBalancers/', parameters('lb-settings').name)]"
-            ],
-            "properties": {
-                "frontendIPConfiguration": {
-                    "id": "[resourceId('Microsoft.Network/loadBalancers/frontendIPConfigurations', parameters('lb-settings').name, 'lb-frontEnd')]"
-                },
-                "protocol": "tcp",
-                "frontendPort": "[copyIndex(5000)]",
-                "backendPort": "[parameters('lb-settings').backendPort]",
-                "enableFloatingIP": false
-            }
         }
     ],
     "outputs": {
