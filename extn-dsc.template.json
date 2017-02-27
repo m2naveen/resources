@@ -33,9 +33,10 @@
                     },
                     "configurationArguments": {
                         "nodeName": "[parameters('extn-settings').vmName]"
-                    }
+                    },
+                    "properties": "[parameters('extn-settings').properties]"
                 },
-                "protectedSettings": null
+                "protectedSettings": "[parameters('extn-settings').protectedSettings]"
             }
         }
     ],
