@@ -31,10 +31,7 @@
                         "script": "[concat(parameters('extn-settings').file, '.ps1')]",
                         "function": "[parameters('extn-settings').function]"
                     },
-                    "configurationArguments": {
-                        "nodeName": "[parameters('extn-settings').vmName]"
-                    },
-                    "properties": "[parameters('extn-settings').properties]"
+                    "configurationArguments": "[parameters('extn-settings').configurationArguments]"
                 },
                 "protectedSettings": "[parameters('extn-settings').protectedSettings]"
             }
